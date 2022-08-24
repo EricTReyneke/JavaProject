@@ -1,4 +1,4 @@
-package com.group_project.app.login;
+/* package com.group_project.app.login;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,5 +21,18 @@ public interface AppUserRepository
     @Query("UPDATE AppUser a " +
             "SET a.enabled = TRUE WHERE a.email = ?1")
     int enableAppUser(String email);
-    
+
+}
+ */
+
+package com.group_project.app.login;
+
+import com.group_project.app.login.AppUser;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AppUserRepository extends JpaRepository<AppUser, Long> {
+
+    AppUser findByEmail(String email);
+
 }
