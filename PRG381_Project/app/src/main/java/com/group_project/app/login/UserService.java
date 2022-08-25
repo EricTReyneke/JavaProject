@@ -1,13 +1,5 @@
 package com.group_project.app.login;
 
-import com.group_project.app.login.UserDto;
-
-
-import com.group_project.app.login.UserDto;
-import com.group_project.app.login.AppRole;
-import com.group_project.app.login.AppUser;
-import com.group_project.app.login.AppRoleRepository;
-import com.group_project.app.login.AppUserRepository;
 import com.group_project.app.login.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

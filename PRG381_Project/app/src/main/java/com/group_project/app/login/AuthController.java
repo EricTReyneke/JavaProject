@@ -1,11 +1,7 @@
 package com.group_project.app.login;
 
 
-import javax.validation.Valid;
-import com.group_project.app.login.UserDto;
-import com.group_project.app.login.AppUser;
-import com.group_project.app.login.UserService;
-import org.springframework.stereotype.Controller;
+import javax.validation.Valid;import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,16 +56,16 @@ public class AuthController {
     }
 
     // handler method to handle list of users
-    @GetMapping("/users")
+    @GetMapping("/Details")
     public String users(Model model){
         List<UserDto> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        return "users";
+        model.addAttribute("Details", users);
+        return "Details";
     }
 
     // handler method to handle login request
-    @GetMapping("/login")
-    public String login(){
-        return "login";
+    @GetMapping("/Login")
+    public String Login(){
+        return "Login";
     }
 }
