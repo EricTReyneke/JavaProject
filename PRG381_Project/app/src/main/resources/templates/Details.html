@@ -4,23 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Details.css">
+    <link rel="stylesheet" href="/JavaProject/PRG381_Project/app/src/main/resources/static/Details.css">
     <title>Registration</title>
 </head>
 <body>
-    <section id="Container">
-        <section id="Content">
-            <h3>All the data Captured</h3>
+    <div class="Container">
+        <div class="Content">
+            <h3>Register Data</h3>
+            <p>Please enter your ID:</p>
+            <input type="text" name="ID" class="in" placeholder="0102040105">
+            <p>Please enter your Full Name:</p>
+            <input type="text" name="FName" class="in" placeholder="Chirene Dekker">
+            <p>Please enter your Address:</p>
+            <input type="text" name="Address" class="in" placeholder="McCafe Road">
+            <p>Please enter your Email:</p>
+            <input type="text" name="Email" class="in" placeholder="exmaple@gmail.com">
+            <p>Please enter your Password:</p>
+            <input type="password" name="Password" class="in" placeholder="********">
+        </div>
+        <div class="Content">
+            <h3>Displaying Data</h3>
             <table>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Adress</th>
+                    <th>Full Name</th>
+                    <th>Address</th>
                     <th>Email</th>
-                    <th>Contact<th>
+                    <th>Password</th>
                 </tr>
             </table>
-        </section>
-    </section>
+        </div> 
+      </div>
+
+      <section id="CRUD">
+        <input type="submit" name="Create" class="CRUD" value="Create">
+        <input type="submit" name="Read" class="CRUD" value="Read">
+        <input type="submit" name="Update" class="CRUD" value="Update">
+        <input type="submit" name="Delete" class="CRUD" value="Delete">
+      </section>
 </body>
 </html>
