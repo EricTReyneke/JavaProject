@@ -7,9 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AuthController {
@@ -27,41 +27,46 @@ public class AuthController {
     }
 
     // method to handle user registration form request
-    @GetMapping("/Details")
+    @GetMapping("/AdminData")
     public String showRegistrationForm(Model model){
         // create model object to store form data
         UserDto user = new UserDto();
         model.addAttribute("user", user);
-        return "Details";
+        return "AdminData";
     }
 
     // method to handle user registration form submit request
-    @PostMapping("/Details/save")
+    @PostMapping("/AdminData/save")
     public String registration(@Valid @ModelAttribute("user") UserDto userDto,
                                BindingResult result,
                                Model model){
         AppUser existingUser = userService.findUserByEmail(userDto.getEmail());
 
         if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
-            result.rejectValue("email", null,
-                    "There is already an account");
+            result.rejectValue("email", null, "There is already an account");
         }
 
         if(result.hasErrors()){
             model.addAttribute("user", userDto);
-            return "/Details";
+            return "/AdminData";
         }
 
         userService.saveUser(userDto);
         return "redirect:/register?success";
     }
 
-    // handler method to handle list of users
-    @GetMapping("/Details")
-    public String users(Model model){
-        List<UserDto> users = userService.findAllUsers();
-        model.addAttribute("Details", users);
-        return "Details";
+    @GetMapping("/AdminDetails")
+    public ModelAndView GetAdminDetails(@PathVariable("AdminDetails") String AdminDetails) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("AdminDetails/" + AdminDetails);
+        return modelAndView;
+    }
+
+    @GetMapping("/UserDetails")
+    public ModelAndView GetUserDetails(@PathVariable("UserDetails") String AdminDetails) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("UserDetails/" + AdminDetails);
+        return modelAndView;
     }
 
     // handler method to handle login request

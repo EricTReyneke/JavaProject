@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/JavaProject/PRG381_Project/app/src/main/resources/static/Details.css">
-    <title>Registration</title>
+    <link rel="stylesheet" href="/static/Details.css">
+    <title>Admin Registration</title>
 </head>
 <body>
     <div class="Container">
@@ -25,13 +25,25 @@
         <div class="Content">
             <h3>Displaying Data</h3>
             <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Full Name</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+            </thead>
+
+                <tbody>
+                    <tr th:each="student: ${student}">
+                        <td th:text="${student.id}" />
+                        <td th:text="${student.name}" />
+                        <td th:text="${student.address}" />
+                        <td th:text="${student.email}" />
+                        <td th:text="${student.password}" />
+                    </tr>
+                </tbody>
             </table>
         </div> 
       </div>
