@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/Details.css">
+    <link rel="stylesheet" href="/Details.css">
     <title>Admin Registration</title>
 </head>
 <body>
@@ -36,12 +36,12 @@
             </thead>
 
                 <tbody>
-                    <tr th:each="student: ${student}">
-                        <td th:text="${student.id}" />
-                        <td th:text="${student.name}" />
-                        <td th:text="${student.address}" />
-                        <td th:text="${student.email}" />
-                        <td th:text="${student.password}" />
+                    <tr th:each="student: ${list}">
+                        <td th:text="${student.student_id}" />
+                        <td th:text="${student.student_name}" />
+                        <td th:text="${student.student_address}" />
+                        <td th:text="${student.student_email}" />
+                        <td th:text="${student.student_password}" />
                     </tr>
                 </tbody>
             </table>

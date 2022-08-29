@@ -1,7 +1,11 @@
 package com.group_project.app.login;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,9 +15,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.group_project.app.Service.AdministratorService;
+import com.group_project.app.Service.StudentService;
+import com.group_project.app.Tables.Administrator;
+import com.group_project.app.Tables.Student;
+
 @Controller
 public class AuthController {
 
+    @Autowired
+    private StudentService studentService;
+
+    @Autowired
+    private AdministratorService adminService;
+    
     private UserService userService;
 
     public AuthController(UserService userService) {
@@ -24,15 +39,6 @@ public class AuthController {
     @GetMapping("")
     public String home(){
         return "Login";
-    }
-
-    // method to handle user registration form request
-    @GetMapping("/AdminData")
-    public String showRegistrationForm(Model model){
-        // create model object to store form data
-        UserDto user = new UserDto();
-        model.addAttribute("user", user);
-        return "AdminData";
     }
 
     // method to handle user registration form submit request
@@ -63,10 +69,18 @@ public class AuthController {
     }
 
     @GetMapping("/UserDetails")
-    public ModelAndView GetUserDetails(@PathVariable("UserDetails") String AdminDetails) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("UserDetails/" + AdminDetails);
-        return modelAndView;
+    public String GetUserDetails(Model model) {
+        List<Student> list = studentService.ListAll();
+        model.addAttribute("list", list);
+        return "UserDetails";
+    }
+
+    
+    @GetMapping("/AdminData")
+    public String GetAdminDetails(Model model) {
+        List<Student> list = studentService.ListAll();
+        model.addAttribute("list", list);
+        return "AdminData";
     }
 
     // handler method to handle login request
